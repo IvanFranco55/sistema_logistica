@@ -1,0 +1,27 @@
+services:
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - DB_NAME=logistica_db
+      - DB_USER=usuario_logistica
+      - DB_PASSWORD=mi_password_secreta
+      - DB_HOST=db
+
+  db:
+    image: postgres:15
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=logistica_db
+      - POSTGRES_USER=usuario_logistica
+      - POSTGRES_PASSWORD=mi_password_secreta
+
+volumes:
+  postgres_data:

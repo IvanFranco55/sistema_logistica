@@ -1,0 +1,24 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+
+# --- Django ---
+*.log
+local_settings.py
+db.sqlite3
+media/
+
+# --- Variables de Entorno y Seguridad ---
+.env
+.venv
+venv/
+ENV/
+
+# --- IDEs (Archivos de configuración de tu editor que a nadie le importan) ---
+.vscode/
+.idea/
+
+# --- Docker (Opcional, si no querés subir los volúmenes de datos) ---
+# Ignoramos la carpeta de datos de postgres si la mapeaste localmente
+postgres_data/
