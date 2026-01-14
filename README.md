@@ -46,14 +46,21 @@ El proyecto está 100% Dockerizado. No requiere instalar Python ni PostgreSQL en
 
 **1. Clonar el repositorio:**
 ```bash
-git clone [https://github.com/TU_USUARIO/sistema_logistica.git](https://github.com/TU_USUARIO/sistema_logistica.git)
+git clone [https://github.com/](https://github.com/)[IvanFranco55]/sistema_logistica.git
 cd sistema_logistica
 2. Iniciar servicios (Build & Run):
 
 Bash
 
 docker compose up --build
-3. Acceder al sistema:
+3. Crear Primer Usuario Administrador: Como la base de datos inicia vacía, ejecutá este comando para crear tus credenciales:
+
+Bash
+
+docker compose exec web python manage.py createsuperuser
+(Seguí las instrucciones en pantalla para elegir tu usuario y contraseña).
+
+4. Acceder al sistema:
 
 Documentación API (Swagger): http://localhost:8000/swagger/
 
@@ -61,18 +68,18 @@ Panel Administrativo: http://localhost:8000/admin/
 
 🧪 Guía de Uso Rápida (Endpoints)
 Paso 1: Autenticación
-Enviar credenciales para obtener el Token.
+Enviar credenciales para obtener el Token de acceso.
 
 POST /api/token/
 
-Body: {"username": "admin", "password": "..."}
+Body: {"username": "tu_usuario", "password": "tu_password"}
 
 Paso 2: Crear Producto
 POST /api/productos/
 
-Header: Authorization: Bearer <TU_TOKEN>
+Header: Authorization: Bearer <TU_TOKEN_ACCESS>
 
-Nota: Al enviar las dimensiones, el sistema devolverá el volumen_m3 calculado.
+Nota: Al enviar las dimensiones, el sistema devolverá el volumen_m3 calculado automáticamente.
 
 Paso 3: Cargar Stock (Entrada)
 POST /api/movimientos/
@@ -82,10 +89,8 @@ Body: {"producto": 1, "cantidad": 50, "tipo": "ENTRADA"}
 Resultado: El stock del producto 1 aumentará automáticamente.
 
 👤 Autor
-[TU NOMBRE] - Backend Developer
+[Ivan Franco] - Backend Developer
 
-LinkedIn
-
-Portfolio
+LinkedIn --> www.linkedin.com/in/ivan-franco-478a91364 
 
 Este proyecto fue desarrollado bajo estándares de arquitectura limpia y buenas prácticas de desarrollo backend.
